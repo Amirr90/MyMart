@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:id="@+id/productContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageViewProductThumb"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="fitCenter" />
+
+            <com.romainpiel.shimmer.ShimmerTextView
+                android:paddingBottom="@dimen/margin_4"
+                android:paddingEnd="@dimen/margin_8"
+                android:paddingStart="@dimen/margin_8"
+                android:paddingTop="@dimen/margin_4"
+                android:id="@+id/shimmer_tv"
+                android:background="@color/colorAccent"
+                android:text="@string/new_product"
+                android:textColor="@android:color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textViewNew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:fontFamily="@font/antic"
+                android:paddingStart="@dimen/margin_8"
+                android:paddingTop="@dimen/margin_4"
+                android:paddingEnd="@dimen/margin_8"
+                android:paddingBottom="@dimen/margin_4"
+                android:text="@string/new_product"
+                android:textColor="@android:color/white"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/cart_home"
+                android:padding="8dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/cart_round_home"
+                android:src="@drawable/ic_shopping_cart_white_24dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                />
+        </RelativeLayout>
+
+        <TextView
+
+            android:id="@+id/textViewProductDiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_8"
+            android:layout_marginLeft="@dimen/margin_8"
+            android:layout_marginTop="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_8"
+            android:layout_marginRight="@dimen/margin_8"
+            android:background="#58B619"
+            android:fontFamily="@font/antic"
+            android:lines="1"
+            android:paddingLeft="2.5dp"
+            android:paddingRight="2.5dp"
+            android:text="70% OFF"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="12sp" />
+        <TextView
+            android:id="@+id/textViewProductName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_8"
+            android:layout_marginLeft="@dimen/margin_8"
+            android:layout_marginTop="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_8"
+            android:layout_marginRight="@dimen/margin_8"
+            android:fontFamily="@font/antic"
+            android:lines="1"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/textViewProductPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginLeft="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_4"
+                android:layout_marginEnd="@dimen/margin_8"
+                android:layout_marginRight="@dimen/margin_8"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:fontFamily="@font/antic"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/old_price_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_4"
+                android:layout_marginLeft="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_4"
+                android:layout_marginEnd="@dimen/margin_8"
+                android:layout_marginRight="@dimen/margin_8"
+                android:layout_marginBottom="@dimen/margin_4"
+                android:fontFamily="@font/antic"
+                android:text="₹40.0"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textColor="@color/btnRegister"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+</android.support.v7.widget.CardView>

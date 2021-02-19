@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/coin_image"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/refer"
+            android:layout_width="match_parent"
+            android:layout_height="250dp" />
+
+
+
+        <TextView
+            android:id="@+id/textView43"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/coin_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/antic"
+            android:text="Share and Earn " />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView43"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="#40A2ADB9"
+            android:fontFamily="@font/antic"
+            android:padding="15dp"
+            android:text="Share VibaMart with your friends, Your friends will get Rs.50 voucher code whn he/she install VibaMart for the first time, You Also get Rs.50 Voucher code "
+            android:textColor="@color/backgroundColor" />
+
+        <Button
+            android:id="@+id/btn_share_earn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView10"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/transparent_gradient"
+            android:fontFamily="@font/antic"
+            android:text="Share Now"
+            android:textColor="@android:color/white" />
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="2dp"
+    android:layout_margin="5dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:id="@+id/productContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+
+                android:layout_below="@+id/textViewNew"
+                android:id="@+id/imageView3"
+                android:layout_width="100dp"
+                android:layout_height="120dp"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                android:id="@+id/textViewNew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/green"
+                android:fontFamily="@font/antic"
+                android:paddingStart="@dimen/margin_8"
+                android:paddingTop="@dimen/margin_4"
+                android:paddingEnd="@dimen/margin_8"
+                android:paddingBottom="@dimen/margin_4"
+                android:text="@string/offer"
+                android:textColor="@android:color/white"
+                android:textSize="10sp" />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_8"
+            android:layout_marginLeft="@dimen/margin_8"
+            android:layout_marginTop="@dimen/margin_4"
+            android:layout_marginEnd="@dimen/margin_4"
+            android:layout_marginRight="@dimen/margin_8"
+            android:fontFamily="@font/antic"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_8"
+            android:layout_marginLeft="@dimen/margin_8"
+            android:layout_marginTop="@dimen/margin_4"
+            android:layout_marginEnd="@dimen/margin_4"
+            android:layout_marginRight="@dimen/margin_8"
+            android:fontFamily="@font/antic"
+            android:lines="1"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/green" />
+
+       <LinearLayout
+           android:orientation="horizontal"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <TextView
+               android:text="₹35.1"
+               android:id="@+id/textView9"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="@dimen/margin_4"
+               android:layout_marginLeft="@dimen/margin_8"
+               android:layout_marginTop="@dimen/margin_4"
+               android:layout_marginEnd="@dimen/margin_8"
+               android:layout_marginRight="@dimen/margin_8"
+               android:layout_marginBottom="@dimen/margin_4"
+               android:fontFamily="@font/antic"
+               android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+               android:textColor="@color/colorAccent" />
+
+           <TextView
+               android:id="@+id/old_price"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="@dimen/margin_4"
+               android:layout_marginLeft="@dimen/margin_8"
+               android:layout_marginTop="@dimen/margin_4"
+               android:layout_marginEnd="@dimen/margin_8"
+               android:layout_marginRight="@dimen/margin_8"
+               android:layout_marginBottom="@dimen/margin_4"
+               android:fontFamily="@font/antic"
+               android:text="₹40.0"
+               android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+               android:textColor="@color/btnRegister"
+               android:textSize="12sp" />
+       </LinearLayout>
+    </LinearLayout>
+
+
+
+</android.support.v7.widget.CardView>

@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
+       <android.support.v7.widget.CardView
+           android:layout_marginTop="40dp"
+           android:layout_marginBottom="10dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           app:cardCornerRadius="2dp"
+           app:cardElevation="2dp">
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+
+               <TextView
+                   android:id="@+id/change_profile_text"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@+id/edit_change_profile"
+                   android:layout_centerHorizontal="true"
+                   android:layout_marginTop="10dp"
+                   android:fontFamily="@font/antic"
+                   android:text="Change Photo"
+                   android:textColor="@color/blue_dark" />
+
+               <de.hdodenhof.circleimageview.CircleImageView
+                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                   android:id="@+id/edit_change_profile"
+                   android:layout_marginTop="40dp"
+                   android:layout_centerHorizontal="true"
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"
+                   android:src="@drawable/image_one"
+                   app:civ_border_width="2dp"
+                   app:civ_border_color="@color/light_grey"/>
+
+               <LinearLayout
+                   android:layout_marginTop="30dp"
+                   android:orientation="vertical"
+                   android:layout_below="@+id/change_profile_text"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+                   <RelativeLayout
+                       android:layout_marginLeft="10dp"
+                       android:background="?android:attr/selectableItemBackground"
+                       android:gravity="center_vertical"
+                       android:padding="10dp"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent">
+
+                       <TextView
+                           android:id="@+id/textView50"
+                           android:layout_width="80dp"
+                           android:layout_height="wrap_content"
+                           android:fontFamily="@font/antic"
+                           android:text="Name" />
+
+                       <EditText
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_marginLeft="50dp"
+                           android:layout_toRightOf="@+id/textView50"
+                           android:background="@null"
+                           android:fontFamily="@font/antic"
+                           android:text="AapsWorld"
+                           android:textSize="18sp" />
+                   </RelativeLayout>
+                   <RelativeLayout
+                       android:layout_marginLeft="10dp"
+                       android:padding="10dp"
+                       android:background="?android:attr/selectableItemBackground"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent">
+
+                       <TextView
+                           android:id="@+id/textView50"
+                           android:layout_width="80dp"
+                           android:layout_height="wrap_content"
+                           android:fontFamily="@font/antic"
+                           android:text="Email Id" />
+
+                       <EditText
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_marginLeft="50dp"
+                           android:layout_toRightOf="@+id/textView50"
+                           android:background="@null"
+                           android:enabled="false"
+                           android:fontFamily="@font/antic"
+                           android:text="It@ndmeaa.com"
+                           android:textSize="18sp" />
+                   </RelativeLayout>
+                   <RelativeLayout
+                       android:layout_marginLeft="10dp"
+                       android:padding="10dp"
+                       android:background="?android:attr/selectableItemBackground"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent">
+
+                       <TextView
+                           android:id="@+id/textView50"
+                           android:layout_width="80dp"
+                           android:layout_height="wrap_content"
+                           android:fontFamily="@font/antic"
+                           android:text="Mobile" />
+
+                       <EditText
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_marginLeft="50dp"
+                           android:layout_toRightOf="@+id/textView50"
+                           android:background="@null"
+                           android:enabled="false"
+                           android:fontFamily="@font/antic"
+                           android:text="9044000123"
+                           android:textSize="18sp" />
+                   </RelativeLayout>
+
+                   <RelativeLayout
+                       android:padding="10dp"
+                       android:layout_marginLeft="10dp"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent">
+
+                       <TextView
+                           android:id="@+id/gender"
+                           android:layout_width="80dp"
+                           android:layout_height="wrap_content"
+                           android:fontFamily="@font/antic"
+                           android:text="Birth Date" />
+
+                       <TextView
+                           android:id="@+id/male"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_marginLeft="50dp"
+                           android:layout_toRightOf="@+id/gender"
+                           android:fontFamily="@font/antic"
+                           android:text="Male"
+                           android:textColor="@color/backgroundColor"
+                           android:textSize="18sp" />
+
+                       <TextView
+                           android:id="@+id/female"
+                           android:layout_width="80dp"
+                           android:layout_height="wrap_content"
+                           android:layout_marginLeft="20dp"
+                           android:layout_toRightOf="@+id/male"
+                           android:fontFamily="@font/antic"
+                           android:text="Female"
+                           android:textSize="18sp" />
+                   </RelativeLayout>
+                   <RelativeLayout
+                       android:layout_marginLeft="10dp"
+                       android:padding="10dp"
+                       android:background="?android:attr/selectableItemBackground"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent">
+
+                       <TextView
+                           android:id="@+id/dob"
+                           android:layout_width="80dp"
+                           android:layout_height="wrap_content"
+                           android:fontFamily="@font/antic"
+                           android:text="Gender" />
+
+                       <TextView
+                           android:layout_width="80dp"
+                           android:layout_height="wrap_content"
+                           android:layout_marginLeft="50dp"
+                           android:layout_toRightOf="@+id/dob"
+                           android:fontFamily="@font/antic"
+                           android:text="Select"
+                           android:textColor="@color/blue_dark"
+                           android:textSize="18sp" />
+                   </RelativeLayout>
+               </LinearLayout>
+
+
+
+           </RelativeLayout>
+       </android.support.v7.widget.CardView>
+
+       <android.support.v7.widget.CardView
+           android:layout_marginBottom="10dp"
+           xmlns:android="http://schemas.android.com/apk/res/android"
+           xmlns:app="http://schemas.android.com/apk/res-auto"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           app:cardCornerRadius="2dp"
+           app:cardElevation="2dp">
+
+           <LinearLayout
+               android:orientation="vertical"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+               <RelativeLayout
+                   android:background="?android:attr/selectableItemBackground"
+                   android:id="@+id/saved_cards"
+                   android:layout_marginLeft="@dimen/margin_8"
+                   android:layout_marginRight="@dimen/margin_8"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+
+                   <ImageView
+                       android:layout_margin="10dp"
+                       android:id="@+id/imageView8"
+                       android:layout_width="25dp"
+                       android:layout_height="25dp"
+                       android:src="@drawable/card" />
+
+                   <LinearLayout
+                       android:id="@+id/saved_card_lay"
+                       android:layout_marginLeft="20dp"
+                       android:layout_toRightOf="@id/imageView8"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:orientation="vertical">
+
+                       <TextView
+
+                           android:layout_marginTop="10dp"
+                           android:id="@+id/acc_saved_cards"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:fontFamily="@font/antic"
+                           android:text="Saved Cards"
+                           android:textSize="16sp" />
+
+
+                   </LinearLayout>
+
+               </RelativeLayout>
+               <View
+                   android:layout_marginLeft="70dp"
+                   android:layout_below="@+id/imageView8"
+                   android:layout_width="match_parent"
+                   android:layout_height="1dp"
+                   android:background="@color/light_grey"/>
+               <RelativeLayout
+                   android:background="?android:attr/selectableItemBackground"
+                   android:id="@+id/acc_my_address_lay"
+                   android:layout_marginLeft="@dimen/margin_8"
+                   android:layout_marginRight="@dimen/margin_8"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+
+                   <ImageView
+                       android:layout_margin="10dp"
+                       android:id="@+id/imageView8"
+                       android:layout_width="25dp"
+                       android:layout_height="25dp"
+                       android:src="@drawable/homee" />
+
+                   <LinearLayout
+                       android:layout_marginLeft="20dp"
+                       android:layout_toRightOf="@id/imageView8"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:orientation="vertical">
+
+                       <TextView
+                           android:layout_marginTop="10dp"
+                           android:id="@+id/textView40"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:fontFamily="@font/antic"
+                           android:text="My Address"
+                           android:textSize="16sp" />
+
+
+                   </LinearLayout>
+
+               </RelativeLayout>
+           </LinearLayout>
+
+       </android.support.v7.widget.CardView>
+
+       <android.support.v7.widget.CardView
+           android:layout_marginBottom="10dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           app:cardCornerRadius="2dp"
+           app:cardElevation="2dp">
+
+           <LinearLayout
+               android:orientation="vertical"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+               <RelativeLayout
+                   android:background="?android:attr/selectableItemBackground"
+                   android:id="@+id/acc_wallet"
+                   android:layout_marginLeft="@dimen/margin_8"
+                   android:layout_marginRight="@dimen/margin_8"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+
+                   <ImageView
+                       android:layout_margin="10dp"
+                       android:id="@+id/imageView8"
+                       android:layout_width="25dp"
+                       android:layout_height="25dp"
+                       android:src="@drawable/reset" />
+
+                   <LinearLayout
+                       android:layout_marginLeft="20dp"
+                       android:layout_toRightOf="@id/imageView8"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:orientation="vertical">
+
+                       <TextView
+                           android:layout_marginTop="10dp"
+                           android:id="@+id/acc_resetPassword"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:fontFamily="@font/antic"
+                           android:text="Reset Password"
+                           android:textSize="16sp" />
+
+
+                   </LinearLayout>
+
+               </RelativeLayout>
+               <View
+                   android:layout_marginLeft="70dp"
+                   android:layout_below="@+id/imageView8"
+                   android:layout_width="match_parent"
+                   android:layout_height="1dp"
+                   android:background="@color/light_grey"/>
+               <RelativeLayout
+                   android:background="?android:attr/selectableItemBackground"
+                   android:id="@+id/acc_wallet"
+                   android:layout_marginLeft="@dimen/margin_8"
+                   android:layout_marginRight="@dimen/margin_8"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+
+                   <ImageView
+                       android:layout_margin="10dp"
+                       android:id="@+id/imageView8"
+                       android:layout_width="25dp"
+                       android:layout_height="25dp"
+                       android:src="@drawable/logout" />
+
+                   <LinearLayout
+                       android:layout_marginLeft="20dp"
+                       android:layout_toRightOf="@id/imageView8"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:orientation="vertical">
+
+                       <TextView
+                           android:layout_marginTop="10dp"
+                           android:id="@+id/acc_logout"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:fontFamily="@font/antic"
+                           android:text="Log Out"
+                           android:textSize="16sp" />
+
+
+                   </LinearLayout>
+
+               </RelativeLayout>
+           </LinearLayout>
+
+       </android.support.v7.widget.CardView>
+
+
+       <android.support.v7.widget.CardView
+           android:layout_gravity="bottom"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           app:cardCornerRadius="2dp"
+           app:cardElevation="2dp">
+
+
+           <Button
+               android:id="@+id/button4"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="10dp"
+               android:layout_marginRight="10dp"
+               android:background="@drawable/transparent_gradient"
+               android:fontFamily="@font/antic"
+               android:text="Save Changes"
+               android:textColor="@android:color/white" />
+       </android.support.v7.widget.CardView>
+   </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

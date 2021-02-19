@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:background="@drawable/line"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            android:id="@+id/layout_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_centerHorizontal="true"
+                app:civ_border_width="1dp"
+                app:civ_border_color="@color/light_grey"
+                android:src="@drawable/category_men"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/title_fashion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linear"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/antic"
+        android:padding="5dp"
+        android:text="Men's Fashion"
+        android:textColor="@color/backgroundColor"
+        android:textSize="14sp" />
+
+
+</RelativeLayout>

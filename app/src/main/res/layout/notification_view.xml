@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="2dp"
+    android:layout_margin="3dp"
+    app:cardElevation="2dp">
+
+    <RelativeLayout
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_marginRight="5dp"
+            android:id="@+id/imageView7"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:srcCompat="@drawable/notification" />
+
+       <RelativeLayout
+           android:layout_toRightOf="@+id/imageView7"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+           <TextView
+               android:id="@+id/textView52"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:fontFamily="@font/antic"
+               android:text="Budget Store" />
+
+           <ImageView
+               android:layout_marginTop="10dp"
+               android:layout_below="@+id/textView52"
+               android:id="@+id/notification_image"
+               android:layout_width="wrap_content"
+               android:layout_height="200dp"
+               />
+
+           <TextView
+               android:id="@+id/textView54"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/notification_image"
+               android:fontFamily="@font/antic" />
+       </RelativeLayout>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

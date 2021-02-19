@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#E9133E</color>
+    <color name="blue_background">#E9133E</color>
+    <color name="blue_dark">#9C0F2D</color>
+    <color name="colorButton">#111010</color>
+    <color name="backgroundColor">#202020</color>
+    <color name="yello">#FF8F00</color>
+    <color name="green">#43B649</color>
+    <color name="transparent">#81360101</color>
+    <color name="rippleColorEffect">#f816a463</color>
+    <color name="btnSignIn">#E9133E</color>
+    <color name="btnRegister">#83838c</color>
+    <color name="pink">#E9133E</color>
+    <color name="light_grey">#E2E1E1</color>
+</resources>

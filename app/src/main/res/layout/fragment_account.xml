@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.Account">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/colap2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:contentScrim="#0e0d0e"
+            app:expandedTitleTextAppearance="@color/white"
+            app:layout_scrollFlags="scroll">
+
+
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/tool_bar_Account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_collapseMode="parallax"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+                <RelativeLayout
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/user_profile"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:src="@drawable/account_circle_black_24dp" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_toRightOf="@+id/user_profile">
+
+                        <TextView
+                            android:id="@+id/user_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/antic"
+
+
+                            android:text="NDMEEA"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/textView42"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/user_name"
+                            android:layout_marginTop="3dp"
+                            android:fontFamily="@font/antic"
+                            android:text="it@ndmeaa.com"
+                            android:textColor="@android:color/white" />
+
+                        <LinearLayout
+                            android:id="@+id/edit_layout"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:background="@drawable/edit_stroke">
+
+                            <TextView
+                                android:id="@+id/textView24"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/antic"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:text="EDIT"
+                                android:textColor="@android:color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                </RelativeLayout>
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nesteScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+       <LinearLayout
+
+           android:layout_width="match_parent"
+           android:orientation="vertical"
+           android:layout_height="wrap_content">
+
+           <android.support.v7.widget.CardView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="10dp"
+               app:cardCornerRadius="2dp"
+               app:cardElevation="2dp">
+
+               <LinearLayout
+
+                   android:orientation="vertical"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+                   <RelativeLayout
+                       android:layout_marginTop="10dp"
+                       android:gravity="center_vertical"
+                       android:id="@+id/account_my_order"
+                       android:layout_marginLeft="@dimen/margin_8"
+                       android:layout_marginRight="@dimen/margin_8"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent">
+
+                       <ImageView
+                           android:layout_margin="10dp"
+                           android:id="@+id/imageView8"
+                           android:layout_width="25dp"
+                           android:layout_height="35dp"
+                           android:src="@drawable/order" />
+
+                       <LinearLayout
+                           android:layout_marginTop="10dp"
+                           android:layout_marginLeft="10dp"
+                           android:layout_toRightOf="@id/imageView8"
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:orientation="vertical">
+
+                           <TextView
+                               android:id="@+id/textView40"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:layout_marginTop="10dp"
+                               android:fontFamily="@font/antic"
+                               android:text="My Orders"
+                               android:textSize="14sp" />
+
+
+                       </LinearLayout>
+
+                       <View
+                           android:layout_marginLeft="50dp"
+                           android:layout_below="@+id/imageView8"
+                           android:layout_width="match_parent"
+                           android:layout_height="1dp"
+                           android:background="@color/light_grey"/>
+
+                   </RelativeLayout>
+
+                   <RelativeLayout
+                       android:layout_marginLeft="@dimen/margin_8"
+                       android:layout_marginRight="@dimen/margin_8"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent">
+
+                       <ImageView
+                           android:layout_margin="10dp"
+                           android:id="@+id/imageView8"
+                           android:layout_width="25dp"
+                           android:layout_height="25dp"
+                           android:src="@drawable/coupon" />
+
+                       <LinearLayout
+                           android:layout_marginLeft="10dp"
+                           android:layout_toRightOf="@id/imageView8"
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:orientation="vertical">
+
+                           <TextView
+                               android:layout_marginTop="10dp"
+                               android:id="@+id/textView40"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:fontFamily="@font/antic"
+                               android:text="Coupons"
+                               android:textSize="14sp" />
+
+
+                       </LinearLayout>
+                       <View
+                           android:layout_marginLeft="50dp"
+                           android:layout_below="@+id/imageView8"
+                           android:layout_width="match_parent"
+                           android:layout_height="1dp"
+                           android:background="@color/light_grey"/>
+
+                   </RelativeLayout>
+
+                   <RelativeLayout
+
+                       android:id="@+id/acc_wallet"
+                       android:layout_marginLeft="@dimen/margin_8"
+                       android:layout_marginRight="@dimen/margin_8"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent">
+
+                       <ImageView
+                           android:layout_margin="10dp"
+                           android:id="@+id/imageView8"
+                           android:layout_width="25dp"
+                           android:layout_height="25dp"
+                           android:src="@drawable/wallet" />
+
+                       <LinearLayout
+                           android:layout_marginLeft="10dp"
+                           android:layout_toRightOf="@id/imageView8"
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:orientation="vertical">
+
+                           <TextView
+                               android:layout_marginTop="10dp"
+                               android:id="@+id/textView40"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:fontFamily="@font/antic"
+                               android:text="Viba Cash(My Wallet)"
+                               android:textSize="14sp" />
+
+
+                       </LinearLayout>
+
+                   </RelativeLayout>
+               </LinearLayout>
+           </android.support.v7.widget.CardView>
+
+
+<LinearLayout
+    android:layout_marginTop="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="2dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+
+                android:id="@+id/shareandearn"
+                android:layout_marginLeft="@dimen/margin_8"
+                android:layout_marginRight="@dimen/margin_8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_margin="10dp"
+                    android:id="@+id/imageView8"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/share_earn" />
+
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/imageView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/textView40"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/antic"
+                        android:text="Share and Earn"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+                <View
+                    android:layout_marginLeft="50dp"
+                    android:layout_below="@+id/imageView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_grey"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+
+                android:id="@+id/acc_notification"
+                android:layout_marginLeft="@dimen/margin_8"
+                android:layout_marginRight="@dimen/margin_8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_margin="10dp"
+                    android:id="@+id/imageView8"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/notification" />
+
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/imageView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/textView40"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/antic"
+                        android:text="Notifications"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+                <View
+                    android:layout_marginLeft="50dp"
+                    android:layout_below="@+id/imageView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_grey"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+
+                android:layout_marginLeft="@dimen/margin_8"
+                android:layout_marginRight="@dimen/margin_8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_margin="10dp"
+                    android:id="@+id/imageView8"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/help_center" />
+
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/imageView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/textView40"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/antic"
+                        android:text="Help Centers"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+                <View
+                    android:layout_marginLeft="50dp"
+                    android:layout_below="@+id/imageView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_grey"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+
+                android:layout_marginLeft="@dimen/margin_8"
+                android:layout_marginRight="@dimen/margin_8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_margin="10dp"
+                    android:id="@+id/imageView8"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/document" />
+
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/imageView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/textView40"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/antic"
+                        android:text="Support Messages"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+                <View
+                    android:layout_marginLeft="50dp"
+                    android:layout_below="@+id/imageView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_grey"/>
+            </RelativeLayout>
+            <RelativeLayout
+
+                android:layout_marginLeft="@dimen/margin_8"
+                android:layout_marginRight="@dimen/margin_8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_margin="10dp"
+                    android:id="@+id/imageView8"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/document" />
+
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/imageView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/textView40"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/antic"
+                        android:text="Rate VibaMart App"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+                <View
+                    android:layout_marginLeft="50dp"
+                    android:layout_below="@+id/imageView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_grey"/>
+            </RelativeLayout>
+            <RelativeLayout
+
+                android:layout_marginLeft="@dimen/margin_8"
+                android:layout_marginRight="@dimen/margin_8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_margin="10dp"
+                    android:id="@+id/imageView8"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/document" />
+
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/imageView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/textView40"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/antic"
+                        android:text="Terms Of Use"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+                <View
+                    android:layout_marginLeft="50dp"
+                    android:layout_below="@+id/imageView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_grey"/>
+            </RelativeLayout>
+            <RelativeLayout
+
+                android:layout_marginLeft="@dimen/margin_8"
+                android:layout_marginRight="@dimen/margin_8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_margin="10dp"
+                    android:id="@+id/imageView8"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/document" />
+
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/imageView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/textView40"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/antic"
+                        android:text="Privacy Policy"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+                <View
+                    android:layout_marginLeft="50dp"
+                    android:layout_below="@+id/imageView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_grey"/>
+            </RelativeLayout>
+            <RelativeLayout
+
+                android:layout_marginLeft="@dimen/margin_8"
+                android:layout_marginRight="@dimen/margin_8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_margin="10dp"
+                    android:id="@+id/imageView8"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/facebook" />
+
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/imageView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/textView40"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/antic"
+                        android:text="Follow us on Facebook"
+                        android:textSize="18sp" />
+
+
+                </LinearLayout>
+                <View
+                    android:layout_marginLeft="50dp"
+                    android:layout_below="@+id/imageView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_grey"/>
+            </RelativeLayout>
+            <RelativeLayout
+
+                android:layout_marginLeft="@dimen/margin_8"
+                android:layout_marginRight="@dimen/margin_8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_margin="10dp"
+                    android:id="@+id/imageView8"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/twitter" />
+
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/imageView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/textView40"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/antic"
+                        android:text="Follow us on Twitter"
+                        android:textSize="18sp" />
+
+
+                </LinearLayout>
+                <View
+                    android:layout_marginLeft="50dp"
+                    android:layout_below="@+id/imageView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_grey"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
+       </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</android.support.design.widget.CoordinatorLayout>

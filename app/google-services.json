@@ -1,0 +1,159 @@
+{
+  "project_info": {
+    "project_number": "907426359945",
+    "firebase_url": "https://fire2-f42d5.firebaseio.com",
+    "project_id": "fire2-f42d5",
+    "storage_bucket": "fire2-f42d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:907426359945:android:a110f0b7b6f18c0c",
+        "android_client_info": {
+          "package_name": "com.e.uber_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "907426359945-535e9r7jnug6ehtoa872g3m18290bv4e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.e.uber_clone",
+            "certificate_hash": "df9aa309f07af4fec50467b37e83d5651e1cdafa"
+          }
+        },
+        {
+          "client_id": "907426359945-gtlelo83gcbra7q86k5rjllek8jmi85d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXoC3j70JAfsTEKwBSgZIX3SAzQOcLiFE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "907426359945-gtlelo83gcbra7q86k5rjllek8jmi85d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:907426359945:android:e550d0b8bdfbfe4b",
+        "android_client_info": {
+          "package_name": "com.e.vibhacart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "907426359945-8fm3mochikrhs0k5f9sqs29vqgv5vs7p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.e.vibhacart",
+            "certificate_hash": "df9aa309f07af4fec50467b37e83d5651e1cdafa"
+          }
+        },
+        {
+          "client_id": "907426359945-gtlelo83gcbra7q86k5rjllek8jmi85d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXoC3j70JAfsTEKwBSgZIX3SAzQOcLiFE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "907426359945-gtlelo83gcbra7q86k5rjllek8jmi85d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:907426359945:android:edc29d11b9b5cef9",
+        "android_client_info": {
+          "package_name": "com.example.aamir.myblog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "907426359945-b67m3pttlfoup5kr49majit33orbbrr0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aamir.myblog",
+            "certificate_hash": "2ae6dec9443464b0aa39309b84faf74b5e618639"
+          }
+        },
+        {
+          "client_id": "907426359945-gtlelo83gcbra7q86k5rjllek8jmi85d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXoC3j70JAfsTEKwBSgZIX3SAzQOcLiFE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "907426359945-gtlelo83gcbra7q86k5rjllek8jmi85d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:907426359945:android:1716df5bdbd12ef3",
+        "android_client_info": {
+          "package_name": "com.example.aamir.practise"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "907426359945-qkqduhas7cd4kd164vf9acpb8dd0t7b2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aamir.practise",
+            "certificate_hash": "2ae6dec9443464b0aa39309b84faf74b5e618639"
+          }
+        },
+        {
+          "client_id": "907426359945-gtlelo83gcbra7q86k5rjllek8jmi85d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXoC3j70JAfsTEKwBSgZIX3SAzQOcLiFE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "907426359945-gtlelo83gcbra7q86k5rjllek8jmi85d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

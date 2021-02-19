@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".EditAddress"
+    tools:showIn="@layout/activity_edit_address">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:padding="15dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/edit_pincode1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:ems="6"
+                android:fontFamily="@font/antic"
+                android:hint="Pincode *"
+                android:inputType="textPersonName"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/edit_name1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/antic"
+                android:hint="Name *"
+                android:inputType="textPersonName"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/edit_address1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/antic"
+                android:hint="Address *"
+                android:inputType="textPersonName"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/edit_land_mark1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:ems="10"
+                android:fontFamily="@font/antic"
+                android:hint="Nearest Landmark *"
+                android:inputType="textPersonName"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/edit_city1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:ems="10"
+                android:fontFamily="@font/antic"
+                android:hint="City *"
+                android:inputType="textPersonName"
+                android:padding="5dp" />
+
+            <Spinner
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/edit_mobile1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:ems="10"
+                android:fontFamily="@font/antic"
+                android:hint="+91 Mobile *"
+                android:inputType="textPersonName"
+                android:padding="5dp" />
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/antic"
+                android:padding="5dp"
+                android:text="Make this my primary address" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/transparent_gradient"
+            android:fontFamily="@font/antic"
+            android:text="Save"
+            android:textColor="@android:color/white" />
+
+
+    </RelativeLayout>
+</RelativeLayout>

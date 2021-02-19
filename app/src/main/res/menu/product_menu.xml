@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="cart"
+        android:id="@+id/product_search"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_search_black_24dp"
+        app:showAsAction="always" />
+    <item
+        android:title="cart"
+        android:id="@+id/product_share"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_share_black_24dp"
+        app:showAsAction="always" />
+    <item
+        android:title="cart"
+        android:id="@+id/product_cart"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_add_shopping_cart_black_24dp"
+        app:showAsAction="always" />
+
+    <item
+        android:title="Home"
+        android:id="@+id/product_home"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_add_shopping_cart_black_24dp"
+        app:showAsAction="never" />
+    <item
+        android:title="My Orders"
+        android:id="@+id/product_my_orders"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_add_shopping_cart_black_24dp"
+        app:showAsAction="never" />
+    <item
+        android:title="Shortlist"
+        android:id="@+id/product_shortlist"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_add_shopping_cart_black_24dp"
+        app:showAsAction="never" />
+    <item
+        android:title="Notifications"
+        android:id="@+id/product_notification"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_add_shopping_cart_black_24dp"
+        app:showAsAction="never" />
+
+
+
+</menu>

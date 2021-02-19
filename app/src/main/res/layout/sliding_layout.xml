@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:layout_margin="5dp"
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="3dp">
+    <ss.com.bannerslider.Slider
+        android:layout_margin="@dimen/margin_4"
+        android:outlineSpotShadowColor="@color/blue_background"
+        app:slider_animateIndicators="true"
+        app:slider_loopSlides="true"
+        app:slider_interval="4000"
+        android:id="@+id/banner_slider2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </ss.com.bannerslider.Slider>
+</android.support.v7.widget.CardView>

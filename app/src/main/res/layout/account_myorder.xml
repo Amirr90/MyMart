@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VibaCash">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/app_bar2"
+        android:theme="@style/AppThemeNo.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/ToolbarTheme" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools">
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="60dp"
+            android:id="@+id/acc_order_rec"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/order_history_lay">
+
+
+        </android.support.v7.widget.RecyclerView>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:orientation="vertical"
+            android:id="@+id/no_cart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_marginTop="100dp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/cart_round"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:srcCompat="@drawable/round_cart" />
+
+            <TextView
+                android:id="@+id/textView44"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cart_round"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:text="No items in your cart"
+                android:textColor="@color/backgroundColor"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView47"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView44"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="Add item you want to shop"
+                android:textColor="@color/backgroundColor"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView47"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/transparent_gradient"
+                android:fontFamily="@font/antic"
+                android:text="Start Shopping"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>
