@@ -49,12 +49,13 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:textSize="16sp"
+                        android:maxLines="1"
                         android:id="@+id/textView34"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/antic"
-                        android:text="Nestle Maggi Tomato Ketchup Bottle, 1kg"
                         android:textColor="@color/backgroundColor" />
 
                     <TextView
@@ -79,8 +80,9 @@
                             android:layout_weight="1"
                             android:fontFamily="@font/antic"
                             android:text="Quantity:"
-                            android:textSize="18sp" />
+                            android:textSize="14sp" />
                         <me.himanshusoni.quantityview.QuantityView
+                            android:visibility="gone"
                             android:padding="5dp"
                             android:gravity="center"
                             android:layout_weight="1"
@@ -96,7 +98,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/antic"
-                        android:text="Rs 800"
                         android:textColor="@color/backgroundColor"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -126,7 +127,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/antic"
                     android:padding="10dp"
-                    android:text="Delivery By 14Aug-16Aug" />
+                    android:text="Expected Delivery 1-3 working Days" />
             </LinearLayout>
 
         </LinearLayout>

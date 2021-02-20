@@ -33,6 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
+                    android:id="@+id/addressLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -121,11 +122,12 @@
                 app:cardElevation="2dp">
 
                 <LinearLayout
-                    android:visibility="gone"
                     android:id="@+id/spin_kit_buy_now"
-                    android:gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:visibility="gone">
+
                     <com.github.ybq.android.spinkit.SpinKitView
 
                         style="@style/SpinKitView.ThreeBounce"
@@ -134,6 +136,7 @@
                         android:layout_gravity="center"
                         app:SpinKit_Color="@color/colorAccent" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -1017,14 +1020,14 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:visibility="gone"
                         android:id="@+id/edit_wallet"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:clickable="true"
                         android:focusable="true"
                         android:orientation="vertical"
-                        android:padding="10dp">
+                        android:padding="10dp"
+                        android:visibility="gone">
 
                         <LinearLayout
                             android:id="@+id/razor_pay"

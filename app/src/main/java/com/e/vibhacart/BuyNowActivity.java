@@ -20,6 +20,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.e.vibhacart.AppUtils.AddressUtils;
+import com.e.vibhacart.Modals.Address;
 import com.e.vibhacart.Modals.CartModel;
 import com.e.vibhacart.Modals.Product;
 import com.example.circulardialog.CDialog;
@@ -43,6 +45,7 @@ import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
 import com.shashank.sony.fancygifdialoglib.FancyGifDialog;
 import com.shashank.sony.fancygifdialoglib.FancyGifDialogListener;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
@@ -74,12 +77,10 @@ public class BuyNowActivity extends AppCompatActivity implements PaymentResultLi
     private FirebaseAuth mAuth;
     FirebaseUser currentUser;
     double TotalCartvalue = 0;
-
     Utils utils;
-    double DISCOUNT = 30;
+    double DISCOUNT = 0;
     double DELIVERY_CHARGE = 0;
     double GST = 0;
-
     double FINAL_PRICE = 0;
 
     private TextView product_price, product_discount, product_gst, product_total_price1, product_totalˍprice2, product_delivry_charge;
@@ -90,12 +91,12 @@ public class BuyNowActivity extends AppCompatActivity implements PaymentResultLi
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_buy_now );
-        Toolbar toolbar = findViewById( R.id.toolbar );
-        setToolbar( toolbar );
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_buy_now);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setToolbar(toolbar);
 
-        mPlaceOrderBtn = (Button) findViewById( R.id.place_order_btn );
+        mPlaceOrderBtn = (Button) findViewById(R.id.place_order_btn);
 
         utils = new Utils();
         findViwes();
@@ -103,68 +104,73 @@ public class BuyNowActivity extends AppCompatActivity implements PaymentResultLi
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
 
-        Checkout.preload( getApplicationContext() );
+        Checkout.preload(getApplicationContext());
         setVisibilityAction();
 
         setBuyNowCartRecItems();
 
-        EditCashOndelivery.setOnClickListener( new View.OnClickListener() {
+        EditCashOndelivery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String pay_mode = "CashOnDelivery";
-                openBottomConfirmDialog( pay_mode );
+                openBottomConfirmDialog(pay_mode);
             }
-        } );
+        });
         setVibaCash();
-        TextVibaCash.setText( "200" );
-        RazorPay.setOnClickListener( new View.OnClickListener() {
+        setAddress();
+        TextVibaCash.setText("200");
+        RazorPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                placeOrder( "RazorPay" );
+                placeOrder("RazorPay");
             }
-        } );
+        });
 
-        VibaCash.setOnClickListener( new View.OnClickListener() {
+        VibaCash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                double Vibacash = Double.parseDouble( TextVibaCash.getText().toString() );
+                double Vibacash = Double.parseDouble(TextVibaCash.getText().toString());
                 if (Vibacash > FINAL_PRICE) {
 
-                    openBottomConfirmDialog( "VibaCash" );
+                    openBottomConfirmDialog("VibaCash");
                     return;
                 }
-                Toast.makeText( BuyNowActivity.this, "insufficient VibaCash", Toast.LENGTH_SHORT ).show();
+                Toast.makeText(BuyNowActivity.this, "insufficient VibaCash", Toast.LENGTH_SHORT).show();
             }
 
-        } );
+        });
+
+
+    }
+
+    private void setAddress() {
+        AddressUtils address = new AddressUtils();
 
 
     }
 
     private void openBottomConfirmDialog(final String pay_mode) {
-        new BottomDialog.Builder( BuyNowActivity.this )
-                .setTitle( "Confirm Order!" )
-                .setContent( "Press Confirm to place order!" )
-                .setPositiveText( "Confirm" )
-                .setPositiveBackgroundColorResource( R.color.blue_dark )
-                //.setPositiveBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary)
-                .setPositiveTextColorResource( android.R.color.white )
-                //.setPositiveTextColor(ContextCompat.getColor(this, android.R.color.colorPrimary)
-                .onPositive( new BottomDialog.ButtonCallback() {
+        new BottomDialog.Builder(BuyNowActivity.this)
+                .setTitle("Confirm Order!")
+                .setContent("Press Confirm to place order!")
+                .setPositiveText("Confirm")
+                .setPositiveBackgroundColorResource(R.color.blue_dark)
+                .setPositiveTextColorResource(android.R.color.white)
+                .onPositive(new BottomDialog.ButtonCallback() {
                     @Override
                     public void onClick(BottomDialog dialog) {
-                        placeOrder( pay_mode );
+                        placeOrder(pay_mode);
 
                     }
-                } )
-                .setNegativeText( "Cancel" )
-                .setNegativeTextColorResource( R.color.blue_dark )
-                .onNegative( new BottomDialog.ButtonCallback() {
+                })
+                .setNegativeText("Cancel")
+                .setNegativeTextColorResource(R.color.blue_dark)
+                .onNegative(new BottomDialog.ButtonCallback() {
                     @Override
                     public void onClick(@NonNull BottomDialog bottomDialog) {
                         bottomDialog.dismiss();
                     }
-                } )
+                })
                 .show();
     }
 
@@ -173,10 +179,10 @@ public class BuyNowActivity extends AppCompatActivity implements PaymentResultLi
     }
 
     private void setToolbar(Toolbar toolbar) {
-        setSupportActionBar( toolbar );
-        getSupportActionBar().setDisplayHomeAsUpEnabled( true );
-        getSupportActionBar().setDisplayShowHomeEnabled( true );
-        getSupportActionBar().setTitle( "Buy Now" );
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("Buy Now");
     }
 
     public boolean onSupportNavigateUp() {
@@ -186,47 +192,46 @@ public class BuyNowActivity extends AppCompatActivity implements PaymentResultLi
 
     private void setBuyNowCartRecItems() {
 
-        BuyNowRec = (RecyclerView) findViewById( R.id.buy_now_cart_recyclerView );
-        LinearLayoutManager layoutManager = new LinearLayoutManager( this );
-        layoutManager.setOrientation( LinearLayoutManager.VERTICAL );
-        BuyNowRec.setLayoutManager( layoutManager );
-        //List<CartModel> cartData=new ArrayList<>(  );
+        BuyNowRec = (RecyclerView) findViewById(R.id.buy_now_cart_recyclerView);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        BuyNowRec.setLayoutManager(layoutManager);
         List<String> cart_item_id = new ArrayList<>();
-        BuyNowAdapter buyNowAdapter = new BuyNowAdapter( cartData, R.id.buy_now_cart_recyclerView, this, cart_item_id );
-        BuyNowRec.setAdapter( buyNowAdapter );
+        BuyNowAdapter buyNowAdapter = new BuyNowAdapter(cartData, R.id.buy_now_cart_recyclerView, this, cart_item_id);
+        BuyNowRec.setAdapter(buyNowAdapter);
 
-        setCartData( buyNowAdapter, cartData, cart_item_id );
+        setCartData(buyNowAdapter, cartData, cart_item_id);
     }
 
     private void setCartData(final BuyNowAdapter cartDataAdapter, final List<CartModel> cartData, final List<String> cart_item_id) {
 
         CollectionReference todaydealref = FirebaseFirestore.getInstance()
-                .collection( "Users" )
-                .document( currentUser.getPhoneNumber() )
-                .collection( "My_Cart" );
+                .collection("Users")
+                .document(currentUser.getPhoneNumber())
+                .collection("My_Cart");
 
 
         todaydealref.get()
-                .addOnCompleteListener( new OnCompleteListener<QuerySnapshot>() {
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot bannerSnapshot : task.getResult()) {
-                                CartModel banners1 = bannerSnapshot.toObject( CartModel.class );
-                                cart_item_id.add( bannerSnapshot.getId() );
-                                TotalCartvalue = TotalCartvalue + ((Double.parseDouble( banners1.getProductPrice() ) * Double.parseDouble( banners1.getQuantity() )));
-                                cartData.add( banners1 );
+                                CartModel banners1 = bannerSnapshot.toObject(CartModel.class);
+                                cart_item_id.add(bannerSnapshot.getId());
+                                TotalCartvalue = TotalCartvalue + ((Double.parseDouble(banners1.getProductPrice()) * Double.parseDouble(banners1.getQuantity())));
+                                cartData.add(banners1);
                             }
                             cartDataAdapter.notifyDataSetChanged();
                             setPriceChart();
                         }
                     }
-                } ).addOnFailureListener( new OnFailureListener() {
+                }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
 
             }
-        } );
+        });
         cartDataAdapter.notifyDataSetChanged();
 
 
@@ -235,47 +240,53 @@ public class BuyNowActivity extends AppCompatActivity implements PaymentResultLi
     private void setPriceChart() {
 
         try {
-            SpinKitLayout.setVisibility( View.INVISIBLE );
+            SpinKitLayout.setVisibility(View.INVISIBLE);
         } catch (Exception e) {
         }
 
-        product_price.setText( utils.RS + (new DecimalFormat( ".#" ).format( TotalCartvalue )) );
+        product_price.setText(utils.RS + (new DecimalFormat(".#").format(TotalCartvalue)));
         if (TotalCartvalue >= 150) {
-            product_delivry_charge.setText( "FREE" );
-            product_delivry_charge.setTextColor( getResources().getColor( R.color.green ) );
+            product_delivry_charge.setText("FREE");
+            product_delivry_charge.setTextColor(getResources().getColor(R.color.green));
         } else {
-            product_delivry_charge.setTextColor( getResources().getColor( R.color.backgroundColor ) );
+            product_delivry_charge.setTextColor(getResources().getColor(R.color.backgroundColor));
             DELIVERY_CHARGE = 59;
-            product_delivry_charge.setText( "+" + utils.RS + DELIVERY_CHARGE );
+            product_delivry_charge.setText("+" + utils.RS + DELIVERY_CHARGE);
+        }
+
+        if (TotalCartvalue >= 2000) {
+            DISCOUNT = 50;
+        } else {
+            DISCOUNT = 0;
         }
 
         //Set Discount
-        product_discount.setText( "-" + utils.RS + new DecimalFormat( ".#" ).format( DISCOUNT ) );
+        product_discount.setText("-" + utils.RS + new DecimalFormat(".#").format(DISCOUNT));
 
-        //Setting GSt
+        //Setting GST
         try {
-            GST = ((18 * TotalCartvalue) / 100);
-            product_gst.setText( "+" + utils.RS + new DecimalFormat( ".#" ).format( GST ) );
+            GST = ((0 * TotalCartvalue) / 100);
+            product_gst.setText("+" + utils.RS + new DecimalFormat(".#").format(GST));
         } catch (Exception e) {
 
         }
         FINAL_PRICE = TotalCartvalue + GST - DISCOUNT + DELIVERY_CHARGE;
-        mPlaceOrderBtn.setText( utils.PAY_RS + (new DecimalFormat( ".#" ).format( FINAL_PRICE )) );
-        product_total_price1.setText( utils.PAY_RS + new DecimalFormat( ".#" ).format( FINAL_PRICE ) );
-        product_totalˍprice2.setText( utils.PAY_RS + new DecimalFormat( ".#" ).format( FINAL_PRICE ) );
-        mCashonDeliveryTextView.setText( utils.RS + new DecimalFormat( ".#" ).format( FINAL_PRICE ) );
+        mPlaceOrderBtn.setText(utils.PAY_RS + (new DecimalFormat(".#").format(FINAL_PRICE)));
+        product_total_price1.setText(utils.PAY_RS + new DecimalFormat(".#").format(FINAL_PRICE));
+        product_totalˍprice2.setText(utils.PAY_RS + new DecimalFormat(".#").format(FINAL_PRICE));
+        mCashonDeliveryTextView.setText(utils.RS + new DecimalFormat(".#").format(FINAL_PRICE));
     }
 
     private void placeOrder(String order_type) {
-        if (order_type.equals( "RazorPay" )) {
+        if (order_type.equals("RazorPay")) {
             startRazorPayPayment();
             return;
         }
 
 
-        setContentView( R.layout.activity_placing_order_layout );
+        setContentView(R.layout.activity_placing_order_layout);
 
-        final RelativeLayout mOrderPlacinglayout = (RelativeLayout) findViewById( R.id.placing_layout );
+        final RelativeLayout mOrderPlacinglayout = (RelativeLayout) findViewById(R.id.placing_layout);
 
         String OrderId = "" + System.currentTimeMillis();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -284,66 +295,66 @@ public class BuyNowActivity extends AppCompatActivity implements PaymentResultLi
         WriteBatch batch = db.batch();
 
         for (int a = 0; a < cartData.size(); a++) {
-            DocumentReference nycRef = db.collection( "Users" )
-                    .document( currentUser.getPhoneNumber() )
-                    .collection( "Orders" )
-                    .document( OrderId )
-                    .collection( "Order_Items" )
+            DocumentReference nycRef = db.collection("Users")
+                    .document(currentUser.getPhoneNumber())
+                    .collection("Orders")
+                    .document(OrderId)
+                    .collection("Order_Items")
                     .document();
-            batch.set( nycRef, cartData.get( a ) );
+            batch.set(nycRef, cartData.get(a));
 
         }
 
         //reference for Order detail
-        DocumentReference nycRef = db.collection( "Users" )
-                .document( currentUser.getPhoneNumber() )
-                .collection( "Orders" )
-                .document( OrderId );
+        DocumentReference nycRef = db.collection("Users")
+                .document(currentUser.getPhoneNumber())
+                .collection("Orders")
+                .document(OrderId);
 
         HashMap<String, String> map = new HashMap<>();
-        map.put( "order_date", OrderId );
-        map.put( "pay_mode", order_type );
-        map.put( "status", "Started" );
-        map.put( "product_price", "" + TotalCartvalue );
-        map.put( "discount", "" + DISCOUNT );
-        map.put( "delivery_charge", "" + DELIVERY_CHARGE );
-        map.put( "taxes", "" + GST );
-        map.put( "net_price", "" + FINAL_PRICE );
-        map.put( "uid", currentUser.getUid() );
-        map.put( "mobile", currentUser.getPhoneNumber() );
-        batch.set( nycRef, map );
+        map.put("order_date", OrderId);
+        map.put("pay_mode", order_type);
+        map.put("status", "Started");
+        map.put("product_price", "" + TotalCartvalue);
+        map.put("discount", "" + DISCOUNT);
+        map.put("delivery_charge", "" + DELIVERY_CHARGE);
+        map.put("taxes", "" + GST);
+        map.put("net_price", "" + FINAL_PRICE);
+        map.put("uid", currentUser.getUid());
+        map.put("mobile", currentUser.getPhoneNumber());
+        batch.set(nycRef, map);
 
         //reference for Order Address
-        DocumentReference addressRef = db.collection( "Users" )
-                .document( currentUser.getPhoneNumber() )
-                .collection( "Orders" )
-                .document( OrderId )
-                .collection( "Order_Address" )
+        DocumentReference addressRef = db.collection("Users")
+                .document(currentUser.getPhoneNumber())
+                .collection("Orders")
+                .document(OrderId)
+                .collection("Order_Address")
                 .document();
         Map<String, String> addressMap = new HashMap<>();
-        addressMap.put( "mobile", mAddressPhone.getText().toString() );
-        addressMap.put( "address", mAddresFull.getText().toString() );
-        addressMap.put( "name", mAddressName.getText().toString() );
-        batch.set( addressRef, addressMap );
+        addressMap.put("mobile", mAddressPhone.getText().toString());
+        addressMap.put("address", mAddresFull.getText().toString());
+        addressMap.put("name", mAddressName.getText().toString());
+        batch.set(addressRef, addressMap);
 
 
-        batch.commit().addOnCompleteListener( new OnCompleteListener<Void>() {
+        batch.commit().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    mOrderPlacinglayout.setVisibility( View.GONE );
-                    Toast.makeText( BuyNowActivity.this, "Order placed successfully", Toast.LENGTH_SHORT ).show();
-                    showPlacedOrderDialog( true );
+                    mOrderPlacinglayout.setVisibility(View.GONE);
+                    Toast.makeText(BuyNowActivity.this, "Order placed successfully", Toast.LENGTH_SHORT).show();
+                    showPlacedOrderDialog(true);
                 }
 
             }
-        } ).addOnFailureListener( new OnFailureListener() {
+        }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText( BuyNowActivity.this, "try again!!", Toast.LENGTH_SHORT ).show();
-                showPlacedOrderDialog( false );
+                Toast.makeText(BuyNowActivity.this, "try again!!", Toast.LENGTH_SHORT).show();
+                showPlacedOrderDialog(false);
             }
-        } );
+        });
 
 
     }
@@ -357,7 +368,7 @@ public class BuyNowActivity extends AppCompatActivity implements PaymentResultLi
         /**
          * Set your logo here
          */
-        checkout.setImage( R.drawable.rzp_logo );
+        checkout.setImage(R.drawable.rzp_logo);
 
         /**
          * Reference to current activity
@@ -374,7 +385,7 @@ public class BuyNowActivity extends AppCompatActivity implements PaymentResultLi
              * Merchant Name
              * eg: ACME Corp || HasGeek etc.
              */
-            options.put( "name", "NDMEEA" );
+            options.put("name", "NDMEEA");
 
             /**
              * Description can be anything
@@ -382,220 +393,204 @@ public class BuyNowActivity extends AppCompatActivity implements PaymentResultLi
              *     Invoice Payment
              *     etc.
              */
-            options.put( "description", "Order #123456" );
-            options.put( "order_id", "order_9A33XWu170gUtm" );
-            options.put( "currency", "INR" );
+            options.put("description", "Order #123456");
+            options.put("order_id", "order_9A33XWu170gUtm");
+            options.put("currency", "INR");
 
             /**
              * Amount is always passed in currency subunits
              * Eg: "500" = INR 5.00
              */
-            String Amount = String.valueOf( FINAL_PRICE * 100 );
-            options.put( "amount", Amount );
+            String Amount = String.valueOf(FINAL_PRICE * 100);
+            options.put("amount", Amount);
 
-            checkout.open( activity, options );
+            checkout.open(activity, options);
         } catch (Exception e) {
-            Toast.makeText( activity, "Error in starting Razorpay Checkout", Toast.LENGTH_SHORT ).show();
+            Toast.makeText(activity, "Error in starting Razorpay Checkout", Toast.LENGTH_SHORT).show();
         }
 
     }
 
     private void showPlacedOrderDialog(boolean b) {
         if (b) {
-            new FancyGifDialog.Builder( this )
-                    .setTitle( "Yah!!" )
-                    .setMessage( "Your Order Placed Successfully, sit relaxed we will inform you once order confirmed" )
-                    .setNegativeBtnText( "Home Page" )
-                    .setPositiveBtnBackground( "#FF4081" )
-                    .setPositiveBtnText( "Order Detail" )
-                    .setNegativeBtnBackground( "#FFA9A7A8" )
-                    .setGifResource( R.drawable.checkk_two )   //Pass your Gif here
-                    .isCancellable( false )
-                    .OnPositiveClicked( new FancyGifDialogListener() {
+            new FancyGifDialog.Builder(this)
+                    .setTitle("Yah!!")
+                    .setMessage("Your Order Placed Successfully, sit relaxed we will inform you once order confirmed")
+                    .setNegativeBtnText("Home Page")
+                    .setPositiveBtnBackground("#FF4081")
+                    .setPositiveBtnText("Order Detail")
+                    .setNegativeBtnBackground("#FFA9A7A8")
+                    .setGifResource(R.drawable.checkk_two)   //Pass your Gif here
+                    .isCancellable(false)
+                    .OnPositiveClicked(new FancyGifDialogListener() {
                         @Override
                         public void OnClick() {
-                            Toast.makeText( BuyNowActivity.this, "Ok", Toast.LENGTH_SHORT ).show();
+                            Toast.makeText(BuyNowActivity.this, "Ok", Toast.LENGTH_SHORT).show();
                         }
-                    } )
-                    .OnNegativeClicked( new FancyGifDialogListener() {
+                    })
+                    .OnNegativeClicked(new FancyGifDialogListener() {
                         @Override
                         public void OnClick() {
-                            Toast.makeText( BuyNowActivity.this, "Cancel", Toast.LENGTH_SHORT ).show();
+                            Toast.makeText(BuyNowActivity.this, "Cancel", Toast.LENGTH_SHORT).show();
                         }
-                    } )
+                    })
                     .build();
-            /*new CDialog(this).createAlert("Placed Successfully",
-                    CDConstants.SUCCESS,   // Type of dialog
+        }
+        if (!b) {
+            new CDialog(this).createAlert("Failed to place order",
+                    CDConstants.ERROR,   // Type of dialog
                     CDConstants.LARGE)    //  size of dialog
                     .setAnimation(CDConstants.SCALE_FROM_BOTTOM_TO_TOP)     //  Animation for enter/exit
                     .setDuration(3000)   // in milliseconds
                     .setTextSize(CDConstants.LARGE_TEXT_SIZE)  // CDConstants.LARGE_TEXT_SIZE, CDConstants.NORMAL_TEXT_SIZE
-                    .show();*/
-
-           /*startActivity( new Intent( BuyNowActivity.this,FullOrderDetail.class ) );
-           finish();*/
-
-        }
-        if (!b) {
-            new CDialog( this ).createAlert( "Failed to place order",
-                    CDConstants.ERROR,   // Type of dialog
-                    CDConstants.LARGE )    //  size of dialog
-                    .setAnimation( CDConstants.SCALE_FROM_BOTTOM_TO_TOP )     //  Animation for enter/exit
-                    .setDuration( 3000 )   // in milliseconds
-                    .setTextSize( CDConstants.LARGE_TEXT_SIZE )  // CDConstants.LARGE_TEXT_SIZE, CDConstants.NORMAL_TEXT_SIZE
                     .show();
         }
     }
 
     private void findViwes() {
-        product_price = (TextView) findViewById( R.id.product_price2 );
-        product_discount = (TextView) findViewById( R.id.product_discount2 );
-        product_gst = (TextView) findViewById( R.id.product_gst );
-        product_total_price1 = (TextView) findViewById( R.id.product_final_price2 );
-        product_totalˍprice2 = (TextView) findViewById( R.id.product_price3 );
-        product_delivry_charge = (TextView) findViewById( R.id.product_delivery_charge );
-        mCashonDeliveryTextView = (TextView) findViewById( R.id.cash_on_textView );
-        mAddressName = (TextView) findViewById( R.id.addres_name );
-        mAddressPhone = (TextView) findViewById( R.id.address_ˍmobile );
-        mAddresFull = (TextView) findViewById( R.id.address_full );
-        RazorPay = (LinearLayout) findViewById( R.id.razor_pay );
-        VibaCash = (LinearLayout) findViewById( R.id.vibacash );
-        TextVibaCash = (TextView) findViewById( R.id.textWallet );
-        SpinKitLayout = (LinearLayout) findViewById( R.id.spin_kit_buy_now );
+        product_price = (TextView) findViewById(R.id.product_price2);
+        product_discount = (TextView) findViewById(R.id.product_discount2);
+        product_gst = (TextView) findViewById(R.id.product_gst);
+        product_total_price1 = (TextView) findViewById(R.id.product_final_price2);
+        product_totalˍprice2 = (TextView) findViewById(R.id.product_price3);
+        product_delivry_charge = (TextView) findViewById(R.id.product_delivery_charge);
+        mCashonDeliveryTextView = (TextView) findViewById(R.id.cash_on_textView);
+        mAddressName = (TextView) findViewById(R.id.addres_name);
+        mAddressPhone = (TextView) findViewById(R.id.address_ˍmobile);
+        mAddresFull = (TextView) findViewById(R.id.address_full);
+        RazorPay = (LinearLayout) findViewById(R.id.razor_pay);
+        VibaCash = (LinearLayout) findViewById(R.id.vibacash);
+        TextVibaCash = (TextView) findViewById(R.id.textWallet);
+        SpinKitLayout = (LinearLayout) findViewById(R.id.spin_kit_buy_now);
 
 
     }
 
     private void setVisibilityAction() {
-        ImagePromoCode = (ImageView) findViewById( R.id.promo_code_arrow );
-        PromoCodeLay = (LinearLayout) findViewById( R.id.promo_code_lay );
-        EditPromoCodeLay = (LinearLayout) findViewById( R.id.edit_promo_code_lay );
-        PromoCodeLay.setOnClickListener( new View.OnClickListener() {
+        ImagePromoCode = (ImageView) findViewById(R.id.promo_code_arrow);
+        PromoCodeLay = (LinearLayout) findViewById(R.id.promo_code_lay);
+        EditPromoCodeLay = (LinearLayout) findViewById(R.id.edit_promo_code_lay);
+        PromoCodeLay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!isPromoLayVisible) {
-                    EditPromoCodeLay.setVisibility( View.VISIBLE );
+                    EditPromoCodeLay.setVisibility(View.VISIBLE);
                     isPromoLayVisible = true;
                     return;
                 }
 
                 if (isPromoLayVisible) {
-                    EditPromoCodeLay.setVisibility( View.GONE );
+                    EditPromoCodeLay.setVisibility(View.GONE);
                     isPromoLayVisible = false;
                 }
 
             }
-        } );
+        });
 
 
         //credit card Layout
-        ImageCreditcard = (ImageView) findViewById( R.id.debit_card_arrow );
-        CreditCardLay = (LinearLayout) findViewById( R.id.debit_card_lay );
-        EditCreditCardLay = (RelativeLayout) findViewById( R.id.edit_debit_card_lay );
-        CreditCardLay.setOnClickListener( new View.OnClickListener() {
+        ImageCreditcard = (ImageView) findViewById(R.id.debit_card_arrow);
+        CreditCardLay = (LinearLayout) findViewById(R.id.debit_card_lay);
+        EditCreditCardLay = (RelativeLayout) findViewById(R.id.edit_debit_card_lay);
+        CreditCardLay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!isCreditLayVisible) {
-                    EditCreditCardLay.setVisibility( View.VISIBLE );
+                    EditCreditCardLay.setVisibility(View.VISIBLE);
                     isCreditLayVisible = true;
                     return;
                 }
 
                 if (isCreditLayVisible) {
-                    EditCreditCardLay.setVisibility( View.GONE );
+                    EditCreditCardLay.setVisibility(View.GONE);
                     isCreditLayVisible = false;
                 }
 
             }
-        } );
+        });
 
 
         //debit card Layout
-        ImageDebitcard = (ImageView) findViewById( R.id.credit_card_arrow );
-        DebitCardLay = (LinearLayout) findViewById( R.id.credit_card_lay );
-        EditDebitCardLay = (RelativeLayout) findViewById( R.id.edit_credit_card_lay );
-        DebitCardLay.setOnClickListener( new View.OnClickListener() {
+        ImageDebitcard = (ImageView) findViewById(R.id.credit_card_arrow);
+        DebitCardLay = (LinearLayout) findViewById(R.id.credit_card_lay);
+        EditDebitCardLay = (RelativeLayout) findViewById(R.id.edit_credit_card_lay);
+        DebitCardLay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!isDebitLayVisible) {
-                    EditDebitCardLay.setVisibility( View.VISIBLE );
+                    EditDebitCardLay.setVisibility(View.VISIBLE);
                     isDebitLayVisible = true;
                     return;
                 }
 
                 if (isDebitLayVisible) {
-                    EditDebitCardLay.setVisibility( View.GONE );
+                    EditDebitCardLay.setVisibility(View.GONE);
                     isDebitLayVisible = false;
                 }
 
             }
-        } );
+        });
 
 
         //cash On delivery Layout
-        ImageCashOndelivery = (ImageView) findViewById( R.id.cash_on_delivery_arrow );
-        CashOndeliveryLay = (LinearLayout) findViewById( R.id.cash_on_delivery_lay );
-        EditCashOndelivery = (LinearLayout) findViewById( R.id.edit_cash_on_delivery );
-        CashOndeliveryLay.setOnClickListener( new View.OnClickListener() {
+        ImageCashOndelivery = (ImageView) findViewById(R.id.cash_on_delivery_arrow);
+        CashOndeliveryLay = (LinearLayout) findViewById(R.id.cash_on_delivery_lay);
+        EditCashOndelivery = (LinearLayout) findViewById(R.id.edit_cash_on_delivery);
+        CashOndeliveryLay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!isCashOnDelivery) {
-                    EditCashOndelivery.setVisibility( View.VISIBLE );
+                    EditCashOndelivery.setVisibility(View.VISIBLE);
                     isCashOnDelivery = true;
                     return;
                 }
 
                 if (isCashOnDelivery) {
-                    EditCashOndelivery.setVisibility( View.GONE );
+                    EditCashOndelivery.setVisibility(View.GONE);
                     isCashOnDelivery = false;
                 }
 
             }
-        } );
+        });
 
 
         //wallet Layout
-        ImageWallet = (ImageView) findViewById( R.id.wallet_arrow );
-        WalletLay = (LinearLayout) findViewById( R.id.wallet_lay );
-        EditWallet = (LinearLayout) findViewById( R.id.edit_wallet );
-        WalletLay.setOnClickListener( new View.OnClickListener() {
+        ImageWallet = (ImageView) findViewById(R.id.wallet_arrow);
+        WalletLay = (LinearLayout) findViewById(R.id.wallet_lay);
+        EditWallet = (LinearLayout) findViewById(R.id.edit_wallet);
+        WalletLay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!isWallet) {
-                    EditWallet.setVisibility( View.VISIBLE );
+                    EditWallet.setVisibility(View.VISIBLE);
                     isWallet = true;
-                    return;
-                }
-
-                if (isWallet) {
-                    EditWallet.setVisibility( View.GONE );
+                } else {
+                    EditWallet.setVisibility(View.GONE);
                     isWallet = false;
                 }
 
             }
-        } );
+        });
     }
 
     @Override
     public void onPaymentSuccess(String s) {
-        placeOrder( "RAZOR_PAY" );
+        placeOrder("RAZOR_PAY");
     }
 
     @Override
     public void onPaymentError(int i, String s) {
-        Toast.makeText( this, s, Toast.LENGTH_SHORT ).show();
+        Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
     }
 
     private class BuyNowAdapter extends RecyclerView.Adapter<BuyNowAdapter.MyViewHolder> {
-        private List<CartModel> cartData;
-        private int buy_now_cart_recyclerView;
-        private Context context;
-        private List<String> cart_item_id;
+        private final List<CartModel> cartData;
+        private final Context context;
+        private final List<String> cart_item_id;
 
 
         public BuyNowAdapter(List<CartModel> cartData, int buy_now_cart_recyclerView, Context context, List<String> cart_item_id) {
             this.cartData = cartData;
-            this.buy_now_cart_recyclerView = buy_now_cart_recyclerView;
             this.context = context;
             this.cart_item_id = cart_item_id;
         }
@@ -603,89 +598,42 @@ public class BuyNowActivity extends AppCompatActivity implements PaymentResultLi
         @NonNull
         @Override
         public BuyNowAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-            View view = LayoutInflater.from( viewGroup.getContext() ).inflate( R.layout.cart_products, viewGroup, false );
-            return new MyViewHolder( view );
+            View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.cart_products, viewGroup, false);
+            return new MyViewHolder(view);
         }
 
         @Override
         public void onBindViewHolder(@NonNull BuyNowAdapter.MyViewHolder myViewHolder, int i) {
-            setQuantity( myViewHolder, i );
+            CartModel cartModel = cartData.get(i);
+            setQuantity(myViewHolder, i);
+
+            myViewHolder.quantityView.setText("Quantity : " + cartModel.getQuantity());
+            myViewHolder.mProductName.setText(cartModel.getProductName());
+            Picasso.get().load(cartModel.getImage()).placeholder(R.drawable.ic_launcher_foreground).into(myViewHolder.imageView);
 
         }
 
         private void setQuantity(final MyViewHolder myViewHolder, final int i) {
-            myViewHolder.quantityView.setOnQuantityChangeListener( new QuantityView.OnQuantityChangeListener() {
+        /*    myViewHolder.quantityView.setOnQuantityChangeListener(new QuantityView.OnQuantityChangeListener() {
                 @Override
                 public void onQuantityChanged(int oldQuantity, int newQuantity, boolean programmatically) {
-                    myViewHolder.progressBar.setVisibility( View.VISIBLE );
-                    Toast.makeText( context, "quatity " + newQuantity, Toast.LENGTH_SHORT ).show();
-                    setQuantityToCart( newQuantity, myViewHolder, cart_item_id.get( i ) );
+                    myViewHolder.progressBar.setVisibility(View.VISIBLE);
+                    Toast.makeText(context, "quatity " + newQuantity, Toast.LENGTH_SHORT).show();
+                    setQuantityToCart(newQuantity, myViewHolder, cart_item_id.get(i));
 
 
                 }
 
                 @Override
                 public void onLimitReached() {
-                    Toast.makeText( context, "You can not Add more than 10 ", Toast.LENGTH_SHORT ).show();
+                    Toast.makeText(context, "You can not Add more than 10 ", Toast.LENGTH_SHORT).show();
 
                 }
-            } );
-            Double Price=Double.parseDouble( cartData.get( i ).getProductPrice() )*Double.parseDouble( cartData.get( i ).getQuantity() );
-            myViewHolder.mPrice.setText( "Rs."+new DecimalFormat( "0.#" ).format( Price ) );
-        }
-
-        private void setQuantityToCart(int newQuantity, final MyViewHolder myViewHolder, final String cart_item_id) {
-
-            SpinKitLayout.setVisibility( View.VISIBLE );
-            final CollectionReference todaydealref = FirebaseFirestore.getInstance()
-                    .collection( "Users" )
-                    .document( currentUser.getPhoneNumber() )
-                    .collection( "My_Cart" );
-            FirebaseFirestore mFirebaseFirestore = FirebaseFirestore.getInstance();
-
-            mFirebaseFirestore
-                    .collection( "Users" )
-                    .document( currentUser.getPhoneNumber() )
-                    .collection( "My_Cart" )
-                    .document( cart_item_id )
-                    .update(
-                            "quantity", "" + newQuantity
-                    )
-                    .addOnCompleteListener( new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                myViewHolder.progressBar.setVisibility( View.GONE );
-
-                                DocumentReference reference = todaydealref.document( cart_item_id );
-                                reference.addSnapshotListener( new EventListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                        if (e != null) {
-                                            Toast.makeText( context, "failed", Toast.LENGTH_SHORT ).show();
-                                            return;
-                                        }
-
-                                        if (documentSnapshot != null && documentSnapshot.exists()) {
-                                            String qua = documentSnapshot.getString( "quantity" );
-                                            String product_price = documentSnapshot.getString( "productPrice" );
-                                            TotalCartvalue = TotalCartvalue + ((Double.parseDouble( product_price ) * Double.parseDouble( qua )));
-                                            setPriceChart();
-
-                                        } else {
-
-                                        }
-                                    }
-                                } );
-                            }
-                        }
-                    } ).addOnFailureListener( new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    myViewHolder.progressBar.setVisibility( View.GONE );
-                    Toast.makeText( context, "try again", Toast.LENGTH_SHORT ).show();
-                }
-            } );
+            });*/
+            Double Price = Double.parseDouble(cartData.get(i).getProductPrice()) * Double.parseDouble(cartData.get(i).getQuantity());
+            String productPrice = cartData.get(i).getProductPrice();
+            String Qty = cartData.get(i).getQuantity();
+            myViewHolder.mPrice.setText("Rs (" + productPrice + "x" + Qty + ")" + " = Rs." + new DecimalFormat("0.#").format(Price));
         }
 
         @Override
@@ -694,15 +642,19 @@ public class BuyNowActivity extends AppCompatActivity implements PaymentResultLi
         }
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
-            private QuantityView quantityView;
-            private ProgressBar progressBar;
-            private TextView mPrice;
+            private final TextView quantityView;
+            private final ProgressBar progressBar;
+            private final TextView mPrice;
+            private final TextView mProductName;
+            private final ImageView imageView;
 
             public MyViewHolder(@NonNull View itemView) {
-                super( itemView );
-                quantityView = (QuantityView) itemView.findViewById( R.id.quantityView );
-                mPrice = (TextView) itemView.findViewById( R.id.textView27 );
-                progressBar = (ProgressBar) itemView.findViewById( R.id.progressBar2 );
+                super(itemView);
+                quantityView = (TextView) itemView.findViewById(R.id.textView28);
+                mPrice = (TextView) itemView.findViewById(R.id.textView27);
+                mProductName = (TextView) itemView.findViewById(R.id.textView34);
+                progressBar = (ProgressBar) itemView.findViewById(R.id.progressBar2);
+                imageView = (ImageView) itemView.findViewById(R.id.imageView6);
 
 
             }
