@@ -55,20 +55,22 @@ public class VibaCash extends AppCompatActivity {
             setContentView(R.layout.activity_viba_cash);
             Toolbar toolbar = findViewById(R.id.toolbar);
             setToolbar(toolbar);
-            getSupportActionBar().setTitle("VibaCash");
+            Objects.requireNonNull(getSupportActionBar()).setTitle("VibaCash");
         } else if (getStringFromAccountPage.equals("AccountMyOrder")) {
             setContentView(R.layout.account_myorder);
             Toolbar toolbar = findViewById(R.id.toolbar);
             setToolbar(toolbar);
-            getSupportActionBar().setTitle("My Orders");
+            Objects.requireNonNull(getSupportActionBar()).setTitle("My Orders");
 
             RelativeLayout NoCart = (RelativeLayout) findViewById(R.id.no_cart);
             RecyclerView recyclerView = (RecyclerView) findViewById(R.id.acc_order_rec);
             List<Order> orders = new ArrayList<>();
 
+
             orders.add(new Order("jhfvg", "hg", "jhjh"));
             orders.add(new Order("jhfvg", "hg", "jhjh"));
             orders.add(new Order("jhfvg", "hg", "jhjh"));
+
 
             AccountOrderAdapter adapter = new AccountOrderAdapter(orders);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -81,7 +83,6 @@ public class VibaCash extends AppCompatActivity {
             Objects.requireNonNull(getSupportActionBar()).setTitle("Edit Profile");
             RelativeLayout MyAddress = (RelativeLayout) findViewById(R.id.acc_my_address_lay);
             RelativeLayout SavedCards = (RelativeLayout) findViewById(R.id.saved_cards);
-
 
 
             MyAddress.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +115,7 @@ public class VibaCash extends AppCompatActivity {
             setContentView(R.layout.share_and_earn);
             Toolbar toolbar = findViewById(R.id.toolbar);
             setToolbar(toolbar);
-            getSupportActionBar().setTitle("Share And Earn");
+            Objects.requireNonNull(getSupportActionBar()).setTitle("Share And Earn");
             Button ShareEarn = (Button) findViewById(R.id.btn_share_earn);
 
             ShareEarn.setOnClickListener(new View.OnClickListener() {
